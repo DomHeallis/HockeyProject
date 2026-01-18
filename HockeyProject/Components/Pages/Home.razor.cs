@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Components;
+using System.Net.Http.Json;
+using System.Text.Json;
+
 namespace HockeyProject.Components.Pages
 {
     public partial class Home
@@ -44,5 +48,35 @@ namespace HockeyProject.Components.Pages
         private sealed record GoalLine(int Number, string Who, string Action);
 
         private enum GameResult { Win, Loss }
+
+        private sealed record PlayerStat(
+            string Name,
+            string Win_Loss,
+            int Goals
+        );
+
+
+
+        [Inject] private IWebHostEnvironment Env { get; set; } = default!;
+
+        private List<PlayerStat>? playerStats;
+
+        protected override async Task OnInitializedAsync()
+        {
+            var path = Path.Combine(Env.WebRootPath, "data", "gameData.json");
+            var json = await File.ReadAllTextAsync(path);
+
+            playerStats = JsonSerializer.Deserialize<List<PlayerStat>>(
+                json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+            );
+        }
+
+
+
+
+
     }
+
+
 }
