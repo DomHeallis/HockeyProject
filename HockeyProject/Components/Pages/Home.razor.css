@@ -1,0 +1,215 @@
+﻿
+    .dashboard {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 4rem;
+    }
+
+    .hero {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        margin: 0.5rem 0 1.75rem;
+    }
+
+    .hero-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 170, 255, 0.18);
+    }
+
+    .hero-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+    }
+
+    .hero-sub {
+        margin-top: 0.15rem;
+        opacity: 0.65;
+        font-size: 0.9rem;
+    }
+
+    .section {
+        margin-top: 2rem;
+    }
+
+    .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        font-weight: 650;
+        opacity: 0.95;
+    }
+
+    .section-meta {
+        font-size: 0.85rem;
+        opacity: 0.55;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    @media (max-width: 800px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+.stat-card, .game-row {
+    border-radius: 18px;
+    padding: 1.25rem 1.5rem;
+    background: radial-gradient(900px 240px at 20% 0%, rgba(0, 190, 255, 0.18), transparent 60%), linear-gradient(135deg, rgba(35, 75, 115, 0.55), rgba(16, 30, 55, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 28px rgba(0,0,0,0.35);
+}
+
+.history {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.game-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 18px;
+    padding: 1.05rem 1.25rem;
+    background: radial-gradient(900px 240px at 20% 0%, rgba(0, 190, 255, 0.14), transparent 60%), linear-gradient(135deg, rgba(35, 75, 115, 0.48), rgba(16, 30, 55, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 10px 28px rgba(0,0,0,0.32);
+    cursor: pointer;
+}
+    .game-row:hover {
+        background: linear-gradient( 135deg, rgba(60, 120, 180, 0.35), rgba(20, 40, 70, 0.85) );
+    }
+.chev {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+    .chev.rot {
+        transform: rotate(180deg);
+    }
+
+
+    .game-row.compact {
+        padding: 0.9rem 1.25rem;
+    }
+
+.pill {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    min-width: 62px;
+    text-align: center;
+}
+
+    .pill.win {
+        background: rgba(20, 170, 110, 0.18);
+        color: rgba(120, 255, 200, 0.95);
+        border: 1px solid rgba(60, 220, 160, 0.25);
+    }
+
+    .pill.loss {
+        background: rgba(220, 60, 60, 0.16);
+        color: rgba(255, 150, 150, 0.95);
+        border: 1px solid rgba(255, 120, 120, 0.22);
+    }
+
+.game-meta {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.game-date {
+    font-weight: 650;
+    opacity: 0.9;
+}
+
+.game-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+}
+
+.game-score {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.score {
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    opacity: 0.95;
+}
+
+.chev {
+    opacity: 0.55;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Details panel: CLOSED by default */
+.game-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
+    padding: 0 1.25rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.25s ease, padding 0.25s ease;
+}
+
+    /* Details panel: OPEN when class "open" is applied */
+    .game-details.open {
+        max-height: 500px; /* big enough for your list */
+        opacity: 1;
+        margin-top: 0.75rem;
+        padding: 1rem 1.25rem 1.1rem;
+    }
+
+.details-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    opacity: 0.7;
+    margin-bottom: 0.65rem;
+}
+
+.detail-line {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+}
+
+    .detail-line .dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        font-size: 0.75rem;
+        background: rgba(255,255,255,0.12);
+    }
+
+    .detail-line .muted {
+        opacity: 0.6;
+    }
+

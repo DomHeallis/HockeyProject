@@ -1,0 +1,126 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+
+<div class="dashboard">
+    <header class="hero">
+        <div class="hero-icon">🏒</div>
+        <div>
+            <div class="hero-title">2026 Season</div>
+            <div class="hero-sub">Head-to-head stats tracker</div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="section-head">
+            <div class="section-title">Season Stats</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-top">
+                    <div class="avatar">Y</div>
+                    <div class="stat-person">
+                        <div class="name">You</div>
+                        <div class="record">3W - 2L (60%)</div>
+                    </div>
+                </div>
+
+                <div class="stat-metrics">
+                    <div class="metric">
+                        <div class="metric-label">GOALS</div>
+                        <div class="metric-value">12</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-label">GAMES</div>
+                        <div class="metric-value">5</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <div class="avatar">F</div>
+                    <div class="stat-person">
+                        <div class="name">Friend</div>
+                        <div class="record">2W - 3L (40%)</div>
+                    </div>
+                </div>
+
+                <div class="stat-metrics">
+                    <div class="metric">
+                        <div class="metric-label">GOALS</div>
+                        <div class="metric-value">12</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-label">GAMES</div>
+                        <div class="metric-value">5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section">
+        <div class="section-head">
+            <div class="section-title">Game History</div>
+            <div class="section-meta">5 games played</div>
+        </div>
+
+        
+
+        <div class="history">
+            @foreach (var game in games)
+            {
+                <div class="game-row @(expandedGameId == game.Id ? "open" : "")"
+                     style="cursor:pointer"
+                     @onclick="() => ToggleGame(game.Id)">
+
+                    <div class="pill @PillClass(game.Result)">
+                        @PillText(game.Result)
+                    </div>
+
+                    <div class="game-meta">
+                        <div class="game-date">
+                            @game.Date.ToString("MMM d, yyyy")
+                        </div>
+
+                        @if (game.Goals is not null)
+                        {
+                            <div class="game-sub">GOAL BREAKDOWN</div>
+                        }
+                    </div>
+
+                    <div class="game-score">
+                        <span class="score">
+                            @game.YourScore - @game.OppScore
+                        </span>
+                        <span class="chev @(expandedGameId == game.Id ? "rot" : "")">⌄</span>
+                    </div>
+                </div>
+
+                @if (expandedGameId == game.Id && game.Goals is not null)
+                {
+                    <div class="game-details open">
+                        <div class="details-title">GOAL BREAKDOWN</div>
+
+                        @foreach (var line in game.Goals)
+                        {
+                            <div class="detail-line">
+                                <span class="dot">@line.Number</span>
+                                @line.Who <span class="muted">@line.Action</span>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+        </div>
+
+    </section>
+</div>
+
+
+
