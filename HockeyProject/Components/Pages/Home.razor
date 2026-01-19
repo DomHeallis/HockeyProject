@@ -16,6 +16,7 @@
             <div class="section-title">Season Stats</div>
         </div>
 
+        @* Improve this for code reusibility  *@
         @if (playerStats is not null && playerStats.Count >= 2)
         {
             var you = playerStats[0];
@@ -33,13 +34,13 @@
 
                     <div class="stat-metrics">
                         <div class="metric">
-                            <div class="metric-label">GOALS</div>
+                            <div class="metric-label">Goals</div>
                             <div class="metric-value">@you.Goals</div>
                         </div>
 
                         <div class="metric">
-                            <div class="metric-label">GAMES</div>
-                            <div class="metric-value">@games.Count</div>
+                            <div class="metric-label">Games Played</div>
+                            <div class="metric-value">@you.gp</div>
                         </div>
                     </div>
                 </div>
@@ -50,18 +51,19 @@
                         <div class="stat-person">
                             <div class="name">@friend.Name</div>
                             <div class="record">@friend.Win_Loss</div>
+                            
                         </div>
                     </div>
 
                     <div class="stat-metrics">
                         <div class="metric">
-                            <div class="metric-label">GOALS</div>
+                            <div class="metric-label">Goals</div>
                             <div class="metric-value">@friend.Goals</div>
                         </div>
 
                         <div class="metric">
-                            <div class="metric-label">GAMES</div>
-                            <div class="metric-value">@games.Count</div>
+                            <div class="metric-label">Games Played</div>
+                            <div class="metric-value">@friend.gp</div>
                         </div>
                     </div>
                 </div>
@@ -78,7 +80,7 @@
     <section class="section">
         <div class="section-head">
             <div class="section-title">Game History</div>
-            <div class="section-meta">5 games played</div>
+            @* <div class="section-meta">5 games played</div> *@
         </div>
 
         

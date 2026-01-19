@@ -2,11 +2,13 @@
   {
     "name": "Dom",
     "win_loss": "2W-0L-0T",
-    "goals": 2 
+    "goals": 2,
+    "gp": 2
   },
   {
     "name": "Gavin",
     "win_loss": "0W-0L-0T",
-    "goals": 0
+    "goals": 0,
+    "gp": 0
   }
 ]

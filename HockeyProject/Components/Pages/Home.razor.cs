@@ -24,7 +24,7 @@ namespace HockeyProject.Components.Pages
         new GoalLine(4, "You", "scored"),
     }),
 
-
+            
         new GameRow(2, GameResult.Loss, new DateOnly(2025, 1, 11), 1, 4),
         new GameRow(3, GameResult.Win,  new DateOnly(2025, 1,  9), 4, 2),
         new GameRow(4, GameResult.Loss, new DateOnly(2025, 1,  7), 0, 3),
@@ -52,7 +52,8 @@ namespace HockeyProject.Components.Pages
         private sealed record PlayerStat(
             string Name,
             string Win_Loss,
-            int Goals
+            int Goals,
+            int gp
         );
 
 
@@ -61,6 +62,7 @@ namespace HockeyProject.Components.Pages
 
         private List<PlayerStat>? playerStats;
 
+         //get info on async 
         protected override async Task OnInitializedAsync()
         {
             var path = Path.Combine(Env.WebRootPath, "data", "gameData.json");
